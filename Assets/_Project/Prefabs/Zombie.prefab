@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 3495788280645642053}
   - component: {fileID: 6448775501764486078}
   - component: {fileID: 8503337985390828562}
+  - component: {fileID: -4747412374460450873}
+  - component: {fileID: 2442782624094995745}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -172,3 +174,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyChase
   _moveSpeed: 2
+--- !u!114 &-4747412374460450873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5318214242764853548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e84396a3ab9694f4cb9ec1c586a54600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  _maxHealth: 100
+--- !u!114 &2442782624094995745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5318214242764853548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee68c475d63c7874a97aa4165e744280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ContactDamage
+  _damage: 10

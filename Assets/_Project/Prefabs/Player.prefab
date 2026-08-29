@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 3831226448842888625}
   - component: {fileID: 55244720005852171}
   - component: {fileID: 6408359306850985831}
+  - component: {fileID: -1967764695642918934}
+  - component: {fileID: 8635233944040641283}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -178,3 +180,29 @@ MonoBehaviour:
     m_Bits: 2
   _wallOffset: 0.5
   _dashCooldown: 1
+--- !u!114 &-1967764695642918934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7625872642476051107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e84396a3ab9694f4cb9ec1c586a54600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  _maxHealth: 100
+--- !u!114 &8635233944040641283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7625872642476051107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c81b7365268b98f46846213251d654d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerContactDamage
+  _invincibleDuration: 0.5
