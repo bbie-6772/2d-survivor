@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8635233944040641283}
   - component: {fileID: 3372211436029336149}
   - component: {fileID: 8124278302756190724}
+  - component: {fileID: 4355710936869997937}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -232,10 +233,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9d6909201e906e4fbaf50bb1190296d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeWeapon
-  _radius: 2
-  _angle: 180
+  _radius: 3
+  _angle: 90
   _damage: 10
   _interval: 1
   _targetLayer:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &4355710936869997937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7625872642476051107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef53bb2d486186b40964f650b33a3a9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageFlash
+  _flashColor: {r: 1, g: 0, b: 0, a: 1}
+  _duration: 0.1
