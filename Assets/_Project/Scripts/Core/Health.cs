@@ -39,10 +39,11 @@ public class Health : MonoBehaviour, IDamageable
         OnDamaged?.Invoke();
 
         if( _currentHealth <= 0f )
-        {
+        {   
+            // 입구 먼저막기 순서 조정
+            _alreadyDead = true;
             // Null 오류 안나게 ?.Invoke() 사용 
             OnDied?.Invoke();
-            _alreadyDead = true;
         }
     }
 }
