@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -4747412374460450873}
   - component: {fileID: 2442782624094995745}
   - component: {fileID: 2159876770509341}
+  - component: {fileID: 1964726002179354432}
   m_Layer: 3
   m_Name: Zombie
   m_TagString: Untagged
@@ -215,3 +216,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamageFlash
   _flashColor: {r: 1, g: 0, b: 0, a: 1}
   _duration: 0.1
+--- !u!114 &1964726002179354432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5318214242764853548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3908bcb0a9bf34292084ab8bc9a712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDeath

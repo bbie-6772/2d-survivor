@@ -235,7 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MeleeWeapon
   _radius: 3
   _angle: 90
-  _damage: 10
+  _damage: 50
   _interval: 1
   _targetLayer:
     serializedVersion: 2

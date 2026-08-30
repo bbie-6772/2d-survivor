@@ -35,7 +35,7 @@ public class EnemySpawner : SpawnerBase
     {
         if (_target)
         {
-            // wait 프로퍼티 캐싱 
+            // wait 필드 캐싱 
             _wait = new WaitForSeconds(_interval);
             return;
         }
@@ -54,14 +54,23 @@ public class EnemySpawner : SpawnerBase
 
     protected override void Setup(GameObject obj)
     {
-        EnemyChase enemy = obj.GetComponent<EnemyChase>();
-        if (enemy)
+        EnemyChase chase = obj.GetComponent<EnemyChase>();
+        if (!chase)
         {
-            enemy.Init(_target);
+            // 프리팹 미설정 경고 남기기
+            Debug.LogError("Prefab에 EnemyChase가 없습니다.", obj);
             return;
         }
 
-        // 프리팹 미설정 경고 남기기
-        Debug.LogError("Prefab에 EnemyChase가 없습니다.", obj);
+        EnemyDeath death = obj.GetComponent<EnemyDeath>();
+        if (!death)
+        {
+            // 프리팹 미설정 경고 남기기
+            Debug.LogError("Prefab에 EnemyDeath가 없습니다.", obj);
+            return;
+        }
+
+        chase.Init(_target);
+        death.SetReleaseCallback(Despawn);
     }
 }
