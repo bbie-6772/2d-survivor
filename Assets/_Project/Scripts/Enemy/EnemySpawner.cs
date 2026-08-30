@@ -16,7 +16,7 @@ public class EnemySpawner : SpawnerBase
 
     void Start()
     {
-        _wait = new WaitForSeconds(_interval);
+        // SpanwLoop 에서 Spanw()(외부참조)를 하기에 Start에서 진행
         StartCoroutine(SpawnLoop()); 
     }
     
@@ -30,10 +30,13 @@ public class EnemySpawner : SpawnerBase
         }
     }
 
+    // SpanwerBase의 Awake가 무시되지 않고 실행되도록 만든 Awake 훅
     protected override void OnInit()
     {
         if (_target)
         {
+            // wait 프로퍼티 캐싱 
+            _wait = new WaitForSeconds(_interval);
             return;
         }
 
