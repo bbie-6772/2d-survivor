@@ -34,6 +34,8 @@ public class DamageFlash : MonoBehaviour
         _health.OnDamaged -= Flash;
         // 사망 시 색 기존 색 보존 해주기
         _renderer.color = _originalColor;
+        // 비정상 종료를 대비해 초기화 진행
+        _flashRoutine = null;
     }
 
     void Flash()
