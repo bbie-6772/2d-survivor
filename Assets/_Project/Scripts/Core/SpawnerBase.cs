@@ -24,7 +24,7 @@ public abstract class SpawnerBase : MonoBehaviour
         enabled = false;
     }
 
-    public GameObject Spawn()
+    protected GameObject Spawn()
     {   
         // 초기설정 오류 시 발동 안돼도록 가드
         if (!enabled) return null;
