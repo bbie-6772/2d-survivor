@@ -8,6 +8,7 @@ public class EnemySpawner : SpawnerBase
 
     // 인스펙터 지정으로 실행 전 연결 보장
     [SerializeField] private Transform _target;
+    [SerializeField] private HeartSpawner _heartSpawner;
     // 스폰 주기
     [SerializeField] private float _interval = 5f;
 
@@ -33,15 +34,20 @@ public class EnemySpawner : SpawnerBase
     // SpanwerBase의 Awake가 무시되지 않고 실행되도록 만든 Awake 훅
     protected override void OnInit()
     {
-        if (_target)
+        if (_target == null)
         {
-            // wait 필드 캐싱 
-            _wait = new WaitForSeconds(_interval);
+            Debug.LogError("타겟을 지정하지 않았습니다.", this);
+            enabled = false;
             return;
+        } 
+
+        if (_heartSpawner == null)
+        {
+            Debug.LogWarning("HeartSpanwer가 설정되지 않았습니다", this);
         }
 
-        Debug.LogError("타겟을 지정하지 않았습니다.", this);
-        enabled = false;
+        // wait 필드 캐싱 
+        _wait = new WaitForSeconds(_interval);
     }
 
     protected override Vector2 GetSpawnPosition()
@@ -54,8 +60,9 @@ public class EnemySpawner : SpawnerBase
 
     protected override void Setup(GameObject obj)
     {
+
         EnemyChase chase = obj.GetComponent<EnemyChase>();
-        if (!chase)
+        if (chase == null)
         {
             // 프리팹 미설정 경고 남기기
             Debug.LogError("Prefab에 EnemyChase가 없습니다.", obj);
@@ -63,7 +70,7 @@ public class EnemySpawner : SpawnerBase
         }
 
         EnemyDeath death = obj.GetComponent<EnemyDeath>();
-        if (!death)
+        if (death == null)
         {
             // 프리팹 미설정 경고 남기기
             Debug.LogError("Prefab에 EnemyDeath가 없습니다.", obj);
@@ -72,5 +79,9 @@ public class EnemySpawner : SpawnerBase
 
         chase.Init(_target);
         death.SetReleaseCallback(Despawn);
+        if (_heartSpawner != null)
+        {
+            death.SetDropHeartCallback(_heartSpawner.SpawnHeart);
+        }
     }
 }

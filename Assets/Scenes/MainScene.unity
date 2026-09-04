@@ -124,7 +124,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6843530647795294396, guid: 349a3719d16e7524680020839fe6d216, type: 3}
   m_PrefabInstance: {fileID: 403080022}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &29885064
+--- !u!1 &329795716
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,41 +132,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 29885066}
-  - component: {fileID: 29885065}
+  - component: {fileID: 329795718}
+  - component: {fileID: 329795717}
   m_Layer: 0
-  m_Name: ZombieSpanwer
+  m_Name: ZombieSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &29885065
+--- !u!114 &329795717
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 29885064}
+  m_GameObject: {fileID: 329795716}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95d8f6b0baf949040ab06bd270627cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   _prefab: {fileID: 5318214242764853548, guid: 203a9d0e80447cc429369fa1fa850fb0, type: 3}
-  _spawnRadius: 5
+  _spawnRadius: 20
   _target: {fileID: 13930507}
-  _interval: 2
---- !u!4 &29885066
+  _interval: 5
+--- !u!4 &329795718
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 29885064}
+  m_GameObject: {fileID: 329795716}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.08633, y: -0.22638, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -661,4 +661,4 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 425254251}
   - {fileID: 403080022}
-  - {fileID: 29885066}
+  - {fileID: 329795718}
