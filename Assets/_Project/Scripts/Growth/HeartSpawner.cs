@@ -12,7 +12,14 @@ public class HeartSpawner : SpawnerBase
 
     protected override void Setup(GameObject obj)
     {
-        
+        Heart heart = obj.GetComponent<Heart>();
+        if (heart == null)
+        {
+            Debug.LogError("Prefab에 Heart가 없습니다.", obj);
+            return;
+        }
+
+        heart.SetReleaseCallback(Despawn);
     }
 
 
