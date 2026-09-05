@@ -3546,7 +3546,7 @@ GameObject:
   - component: {fileID: 1851169448}
   - component: {fileID: 1851169447}
   m_Layer: 5
-  m_Name: RemainingTime
+  m_Name: GameRemainingText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3926,7 +3926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0dc58f1fcc559045a9dd7ee9c03dc1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameTimer
-  _duration: 200
+  _duration: 300
 --- !u!4 &1928999113
 Transform:
   m_ObjectHideFlags: 0
