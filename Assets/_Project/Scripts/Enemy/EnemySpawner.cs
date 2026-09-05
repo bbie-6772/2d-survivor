@@ -9,8 +9,10 @@ public class EnemySpawner : SpawnerBase
     // 인스펙터 지정으로 실행 전 연결 보장
     [SerializeField] private Transform _target;
     [SerializeField] private HeartSpawner _heartSpawner;
-    // 스폰 주기
-    [SerializeField] private float _interval = 5f;
+    // 스폰주기 초기 값
+    private float _interval = 5f;
+    // 스폰량 초기 값
+    private int _countPerSpawn = 5;
 
     // 루프마다 새로만들지 않도록 객체 캐싱 GC(가비지컬렉터) 최적화
     private WaitForSeconds _wait;
@@ -26,7 +28,11 @@ public class EnemySpawner : SpawnerBase
     {
         while (true)
         {
-            Spawn();
+            // 1회 생성량에 맞춰 반복
+            for (int i = 0; i < _countPerSpawn; ++i)
+            {
+                Spawn();    
+            }
             yield return _wait;
         }
     }
@@ -83,5 +89,15 @@ public class EnemySpawner : SpawnerBase
         {
             death.SetDropHeartCallback(_heartSpawner.SpawnHeart);
         }
+    }
+
+    // 웨이브 시스템을 적용 시켜주는 메서드
+    public void SetSpawnParams(float interval, int countPerSpawn)
+    {
+        // 값 적용 
+        _interval = interval;
+        _countPerSpawn = countPerSpawn;
+        // 스폰 지연 시간 재설정
+        _wait = new WaitForSeconds(_interval);
     }
 }

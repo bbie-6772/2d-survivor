@@ -11,6 +11,8 @@ public class GameTimer : MonoBehaviour
     // field-like event 외부에서 add, remove 만 가능하도록 event로 제한
     // 구독 순서대로 작동함
     public event Action OnExpired;
+    // 외부 현재 시간 확인용 필드
+    public float Elapsed => _duration - Remaining;
 
     void Awake()
     {
