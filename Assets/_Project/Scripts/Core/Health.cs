@@ -13,6 +13,8 @@ public class Health : MonoBehaviour, IDamageable
     public event Action OnDied;
     // 피격판정 함수
     public event Action OnDamaged;
+    // UI 업데이트용 함수 
+    public event Action OnHealthChanged;
 
     // 읽기용 필드 (UI 접근용)
     public float MaxHealth => _maxHealth;
@@ -49,6 +51,7 @@ public class Health : MonoBehaviour, IDamageable
         // 음수 방지
         _currentHealth = Mathf.Max(_currentHealth - amount, 0f);
         OnDamaged?.Invoke();
+        OnHealthChanged?.Invoke();
 
         if( _currentHealth <= 0f )
         {   
@@ -73,5 +76,7 @@ public class Health : MonoBehaviour, IDamageable
         _maxHealth += amount;
         // 증가 비율에 맞춰 현재체력 계산
         _currentHealth = _maxHealth * ratio;
+        // UI 적용
+        OnHealthChanged?.Invoke();
     }
 }

@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     
     // 읽기용 필드 (UI 접근용)
     public float MoveSpeed => _moveSpeed;
+    public float DashCooldownRemaining => _dashCooldownRemaining;
+    public float DashCooldown => _dashCooldown;
 
     // 초기화에 사용되는 메서드
     void Awake()

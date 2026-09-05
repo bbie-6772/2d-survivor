@@ -12,4 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fae3d1ab52e8beb4a988172ca4b66f97, type: 3}
   m_Name: WaveTable
   m_EditorClassIdentifier: Assembly-CSharp::WaveTable
-  _waves: []
+  _waves:
+  - StartTime: 0
+    Interval: 2
+    CountPerSpawn: 1
+  - StartTime: 12
+    Interval: 1.2
+    CountPerSpawn: 2
+  - StartTime: 24
+    Interval: 0.8
+    CountPerSpawn: 3
+  - StartTime: 36
+    Interval: 0.5
+    CountPerSpawn: 4
+  - StartTime: 48
+    Interval: 0.3
+    CountPerSpawn: 6
