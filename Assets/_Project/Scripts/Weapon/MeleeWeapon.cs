@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ public class MeleeWeapon : MonoBehaviour
     public float Range => _radius;
     public float Damage => _damage;
     public float AttacksPerSpeed => _attacksPerSecond;
+    public event Action OnAttacked;
 
     void Awake()
     {
@@ -68,7 +70,8 @@ public class MeleeWeapon : MonoBehaviour
         {
             // 범위 내(원형) 콜라이더 확인
             Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position,_radius, _targetLayer);
-
+            // 공격 관련 함수 실행
+            OnAttacked?.Invoke();
             foreach (Collider2D hit in hits)
             {
                 // 타겟 방향 벡터 추출
