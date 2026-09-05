@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 74712005}
   - component: {fileID: 74712004}
   - component: {fileID: 74712003}
-  m_Layer: 1
+  m_Layer: 8
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 364059393}
   - component: {fileID: 364059392}
   - component: {fileID: 364059391}
-  m_Layer: 1
+  m_Layer: 8
   m_Name: Wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -904,6 +904,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4799838942399123239, guid: 349a3719d16e7524680020839fe6d216, type: 3}
+      propertyPath: _growthRate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4799838942399123239, guid: 349a3719d16e7524680020839fe6d216, type: 3}
+      propertyPath: _requiredExp
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408359306850985831, guid: 349a3719d16e7524680020839fe6d216, type: 3}
+      propertyPath: _wallLayer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 6843530647795294396, guid: 349a3719d16e7524680020839fe6d216, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.63
@@ -952,6 +964,10 @@ PrefabInstance:
       propertyPath: _damage
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 8124278302756190724, guid: 349a3719d16e7524680020839fe6d216, type: 3}
+      propertyPath: _attacksPerSecond
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -980,7 +996,7 @@ GameObject:
   - component: {fileID: 425254250}
   - component: {fileID: 425254249}
   - component: {fileID: 425254248}
-  m_Layer: 1
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1583,7 +1599,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 793770044}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enviroment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1858,7 +1874,7 @@ GameObject:
   - component: {fileID: 1216103155}
   - component: {fileID: 1216103154}
   - component: {fileID: 1216103153}
-  m_Layer: 1
+  m_Layer: 8
   m_Name: Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2042,7 +2058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0dc58f1fcc559045a9dd7ee9c03dc1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameTimer
-  _duration: 5
+  _duration: 200
 --- !u!4 &1928999113
 Transform:
   m_ObjectHideFlags: 0

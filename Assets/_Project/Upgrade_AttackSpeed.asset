@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbeb64eb8fa170746b8949ff95dbaf64, type: 3}
   m_Name: Upgrade_AttackSpeed
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeCard
-  _title: "\uACF5\uACA9\uC18D\uB3C4 \uC99D\uAC00"
+  _title: "\uC2E0\uACBD \uAC00\uC18D"
   _stat: 1
   _amount: 1

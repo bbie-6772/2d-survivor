@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbeb64eb8fa170746b8949ff95dbaf64, type: 3}
   m_Name: Upgrade_Range
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeCard
-  _title: "\uACF5\uACA9\uB825 \uC99D\uAC00"
-  _stat: 0
+  _title: "\uD314 \uC5F0\uC7A5"
+  _stat: 4
   _amount: 1

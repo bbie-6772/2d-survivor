@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 4355710936869997937}
   - component: {fileID: 4799838942399123239}
   - component: {fileID: 185467917949025770}
+  - component: {fileID: 79658038553378288}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -368,3 +369,24 @@ MonoBehaviour:
   _movement: {fileID: 6408359306850985831}
   _health: {fileID: -1967764695642918934}
   _testCard: {fileID: 11400000, guid: 2e4f9f9162b5bd94b9cf97608174a0ee, type: 2}
+--- !u!114 &79658038553378288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7625872642476051107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe0a3eb98d56f74fa5e9026dabed4de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardSelector
+  _experience: {fileID: 4799838942399123239}
+  _applier: {fileID: 185467917949025770}
+  _pool:
+  - {fileID: 11400000, guid: 2e4f9f9162b5bd94b9cf97608174a0ee, type: 2}
+  - {fileID: 11400000, guid: 93166754f62efa0428c12a24c0f9d20e, type: 2}
+  - {fileID: 11400000, guid: 07410386edc59a94488bd24967cc8a8c, type: 2}
+  - {fileID: 11400000, guid: 9d70ad00cd318684d938d43aee7d2358, type: 2}
+  - {fileID: 11400000, guid: ac35166874cf89547bd91d36beaf3e18, type: 2}
+  _choiceCount: 3

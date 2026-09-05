@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbeb64eb8fa170746b8949ff95dbaf64, type: 3}
   m_Name: Upgrade_MaxHealth
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeCard
-  _title: "\uCD5C\uB300\uCCB4\uB825 \uC99D\uAC00"
+  _title: "\uADFC\uC12C\uC720 \uAC15\uD654"
   _stat: 2
   _amount: 20
