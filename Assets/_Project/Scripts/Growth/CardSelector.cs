@@ -9,34 +9,12 @@ public class CardSelector : MonoBehaviour
     [SerializeField] private UpgradeCard[] _pool;
     [SerializeField] private int _choiceCount = 3;
 
+    public int ChoiceCount => _choiceCount;
     private int _pendingLevelUps;
 
     // UI가 읽는 용도로 IReadOnly 속성의 List 사용
     public event Action<IReadOnlyList<UpgradeCard>> OnSelectionOpened;
-
-    // // ===== 임시 검증용 (UI 연결 후 제거) =====
-    // private IReadOnlyList<UpgradeCard> _debugCards;
-    // void HandleSelectionOpenedDebug(IReadOnlyList<UpgradeCard> cards)
-    // {
-    //     // TODO: cards를 _debugCards에 보관하고, 카드 이름 3개를 로그로 출력
-    //     _debugCards = cards;
-
-    //     for (int i = 0; i < _debugCards.Count; ++i)
-    //     {
-    //         Debug.Log($"{i+1}번째 카드 {_debugCards[i].Title}");
-    //     }
-    // }
-    // void Update()
-    // {
-    //     if (_debugCards == null || _debugCards.Count < 1)
-    //         return;
-    // // 개똑똑한 enum 산술
-    //     for (int i = 0; i < _debugCards.Count; ++i)
-    //     {
-    //         if (Input.GetKeyDown(KeyCode.Alpha1 + i)) { Select(_debugCards[i]); }
-    //     }
-    // 
-    // // ========================================
+    public event Action OnSelectionClosed;
 
     void Awake()
     {
@@ -66,8 +44,6 @@ public class CardSelector : MonoBehaviour
                 enabled = false;
             }
         }
-
-        // OnSelectionOpened += HandleSelectionOpenedDebug;
     }
 
     void Start()
@@ -127,6 +103,7 @@ public class CardSelector : MonoBehaviour
         // 전부 진행 완료 시, 일시정지 해제
         } else
         {
+            OnSelectionClosed?.Invoke();
             Time.timeScale = 1f;
         }
     }

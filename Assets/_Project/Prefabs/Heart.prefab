@@ -142,4 +142,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 096707ccbb59dc7429736c2d855eef11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Heart
-  _value: 1
+  _value: 5
