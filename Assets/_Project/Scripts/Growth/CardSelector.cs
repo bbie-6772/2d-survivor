@@ -30,7 +30,7 @@ public class CardSelector : MonoBehaviour
     // {
     //     if (_debugCards == null || _debugCards.Count < 1)
     //         return;
-    // // 개똑똑한 enum 산술 ㄷㄷ
+    // // 개똑똑한 enum 산술
     //     for (int i = 0; i < _debugCards.Count; ++i)
     //     {
     //         if (Input.GetKeyDown(KeyCode.Alpha1 + i)) { Select(_debugCards[i]); }
@@ -67,7 +67,7 @@ public class CardSelector : MonoBehaviour
             }
         }
 
-        OnSelectionOpened += HandleSelectionOpenedDebug;
+        // OnSelectionOpened += HandleSelectionOpenedDebug;
     }
 
     void Start()
