@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 8124278302756190724}
   - component: {fileID: 4355710936869997937}
   - component: {fileID: 4799838942399123239}
+  - component: {fileID: 185467917949025770}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -319,7 +320,7 @@ MonoBehaviour:
   _radius: 3
   _angle: 90
   _damage: 50
-  _interval: 1
+  _attacksPerSecond: 1
   _targetLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -351,3 +352,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerExperience
   _requiredExp: 5
   _growthRate: 2
+--- !u!114 &185467917949025770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7625872642476051107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fd5ad7fb7bb0e247957c06fa72e0285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerUpgradeApplier
+  _weapon: {fileID: 8124278302756190724}
+  _movement: {fileID: 6408359306850985831}
+  _health: {fileID: -1967764695642918934}
+  _testCard: {fileID: 11400000, guid: 2e4f9f9162b5bd94b9cf97608174a0ee, type: 2}

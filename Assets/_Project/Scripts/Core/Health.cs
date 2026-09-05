@@ -14,8 +14,20 @@ public class Health : MonoBehaviour, IDamageable
     // 피격판정 함수
     public event Action OnDamaged;
 
+    // 읽기용 필드 (UI 접근용)
+    public float MaxHealth => _maxHealth;
+    public float CurrentHealth => _currentHealth;
+
+
     void Awake()
     {
+        if (_maxHealth <= 0f)
+        {
+            Debug.LogError("잘못된 최대체력 값입니다", this);
+            enabled = false;
+            return;
+        }
+
         _currentHealth = _maxHealth;
     }
 
@@ -45,5 +57,21 @@ public class Health : MonoBehaviour, IDamageable
             // Null 오류 안나게 ?.Invoke() 사용 
             OnDied?.Invoke();
         }
+    }
+
+    public void AddMaxHealth(float amount)
+    {
+        if (amount <= 0f)
+        {
+            Debug.LogWarning("체력 증가량이 음수로 들어옴!!");
+            return;
+        }
+
+        // 기존 최대체력 대비 현재체력 비율을 저장 
+        float ratio = _currentHealth / _maxHealth;
+        // 최대체력 증가
+        _maxHealth += amount;
+        // 증가 비율에 맞춰 현재체력 계산
+        _currentHealth = _maxHealth * ratio;
     }
 }

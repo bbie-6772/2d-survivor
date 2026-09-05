@@ -15,6 +15,9 @@ public class PlayerMovement : MonoBehaviour
     private float _dashCooldownRemaining = 0.0f;
     private bool _dashInput = false;
     
+    // 읽기용 필드 (UI 접근용)
+    public float MoveSpeed => _moveSpeed;
+
     // 초기화에 사용되는 메서드
     void Awake()
     {
@@ -68,5 +71,16 @@ public class PlayerMovement : MonoBehaviour
             }
             _dashInput = false;
         }
+    }
+
+    public void AddMoveSpeed(float amount)
+    {
+        if (amount <= 0f)
+        {
+            Debug.LogWarning("이동속도 증가량이 음수로 들어옴!!");
+            return;
+        }
+
+        _moveSpeed += amount;
     }
 }

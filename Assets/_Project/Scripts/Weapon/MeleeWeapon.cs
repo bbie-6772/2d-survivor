@@ -7,15 +7,19 @@ public class MeleeWeapon : MonoBehaviour
     [SerializeField] private float _radius = 2f;
     [SerializeField] private float _angle = 90f;
     [SerializeField] private float _damage = 10f;
-    // 자동 공격 주기 설정
-    [SerializeField] private float _interval = 1f;
+    // 초당 자동 공격 횟수
+    [SerializeField] private float _attacksPerSecond = 1f;
     // 공격 맞는 대상만을 지정하여 최적화
     [SerializeField] private LayerMask _targetLayer;
-    // 추후 스탯변경에 의해 공격속도 증가 시, 캐싱 방식을 빼야할 수 있음
     private WaitForSeconds _wait;
     private float _threshold;
     // 플레이어 입력방향 캐싱
     private PlayerAim _playerAim;
+
+    // 읽기용 필드 (UI 접근용)
+    public float Range => _radius;
+    public float Damage => _damage;
+    public float AttacksPerSpeed => _attacksPerSecond;
 
     void Awake()
     {
@@ -23,9 +27,17 @@ public class MeleeWeapon : MonoBehaviour
         {
             Debug.LogError("타겟 레이어가 지정되지 않았습니다", this);
             enabled = false;
+            return;
         }
 
-        _wait = new WaitForSeconds(_interval);
+        if (_attacksPerSecond <= 0f)
+        {
+            Debug.LogError("초당 공격속도가 비정상적 입니다.", this);
+            enabled = false;
+            return;
+        }
+
+        _wait = new WaitForSeconds(1f/_attacksPerSecond);
         // 같은 오브젝트까지는 초기설정으로 취급하여 PlayerAim 캐싱진행
         _playerAim = GetComponent<PlayerAim>();  
         // 공격 최대 범위 계산(코사인 값)
@@ -86,7 +98,41 @@ public class MeleeWeapon : MonoBehaviour
         }
     }
 
+    public void AddDamage(float amount)
+    {
+        if (amount <= 0f)
+        {
+            Debug.LogWarning("공격력 증가량이 음수로 들어옴!!");
+            return;
+        }
 
+        _damage += amount;
+    }
+
+    public void AddRange(float amount)
+    {
+        if (amount <= 0f)
+        {
+            Debug.LogWarning("공격범위 증가량이 음수로 들어옴!!");
+            return;
+        }
+
+        _radius += amount;
+    }
+
+    public void AddAttackSpeed(float amount)
+    {
+        if (amount <= 0f)
+        {
+            Debug.LogWarning("공격속도 증가량이 음수로 들어옴!!");
+            return;
+        }
+
+        // 공격 속도 계산
+        _attacksPerSecond += amount;
+        // 공격 속도 적용
+        _wait = new WaitForSeconds(1f/_attacksPerSecond);
+    }
 
 
     
