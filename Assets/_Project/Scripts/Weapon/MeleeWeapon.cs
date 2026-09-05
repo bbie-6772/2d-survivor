@@ -19,6 +19,12 @@ public class MeleeWeapon : MonoBehaviour
 
     void Awake()
     {
+        if (_targetLayer.value == 0)
+        {
+            Debug.LogError("타겟 레이어가 지정되지 않았습니다", this);
+            enabled = false;
+        }
+
         _wait = new WaitForSeconds(_interval);
         // 같은 오브젝트까지는 초기설정으로 취급하여 PlayerAim 캐싱진행
         _playerAim = GetComponent<PlayerAim>();  
