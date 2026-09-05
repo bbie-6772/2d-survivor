@@ -22,7 +22,7 @@ public class PlayerExperience : MonoBehaviour
             Current -= _requiredExp;
             // 매핑된 함수 실행
             OnLevelUp?.Invoke();
-            Debug.Log($"레벨업 완료! {Current}");
+            // Debug.Log($"레벨업 완료! {Current}");
             // 다음 경험치 요구량 설정
             _requiredExp *= _growthRate;
         }

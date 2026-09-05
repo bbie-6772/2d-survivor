@@ -16,7 +16,7 @@ public class HeartCollector : MonoBehaviour
         }
 
         // 디버깅용 
-        _experience.OnLevelUp += () => Debug.Log("레벨업 성공!");
+        // _experience.OnLevelUp += () => Debug.Log("레벨업 성공!");
     }
 
     void OnTriggerEnter2D(Collider2D other)
