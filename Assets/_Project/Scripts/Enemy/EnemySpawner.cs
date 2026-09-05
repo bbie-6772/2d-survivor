@@ -9,6 +9,8 @@ public class EnemySpawner : SpawnerBase
     // 인스펙터 지정으로 실행 전 연결 보장
     [SerializeField] private Transform _target;
     [SerializeField] private HeartSpawner _heartSpawner;
+    [SerializeField] private Vector2 _mapMin = new Vector2(-30f, -30f);
+    [SerializeField] private Vector2 _mapMax = new Vector2(30f, 30f);
     // 스폰주기 초기 값
     private float _interval = 5f;
     // 스폰량 초기 값
@@ -60,6 +62,8 @@ public class EnemySpawner : SpawnerBase
     {
         // 타겟의 지점에서 spawnRadius로 반지름를 갖는 원 위에 생성
         Vector2 spawnPoint = (Vector2)_target.position + (Random.insideUnitCircle.normalized * _spawnRadius);
+        // 맵 영역 밖에서 스폰되지 않도록 Clamp 적용 
+        spawnPoint = Vector2.Min(Vector2.Max(spawnPoint, _mapMin), _mapMax);
 
         return spawnPoint;
     }  
