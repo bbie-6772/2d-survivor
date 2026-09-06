@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -18,6 +19,11 @@ public class EnemySpawner : SpawnerBase
 
     // 루프마다 새로만들지 않도록 객체 캐싱 GC(가비지컬렉터) 최적화
     private WaitForSeconds _wait;
+    // UI 및 확장성을 위한 함수
+    public int AliveCount { get; private set; }
+    public event Action OnSpawn;
+    public event Action OnDespawn;
+    
 
     void Start()
     {
@@ -33,7 +39,9 @@ public class EnemySpawner : SpawnerBase
             // 1회 생성량에 맞춰 반복
             for (int i = 0; i < _countPerSpawn; ++i)
             {
-                Spawn();    
+                Spawn();
+                ++AliveCount;
+                OnSpawn?.Invoke();
             }
             yield return _wait;
         }
@@ -61,7 +69,7 @@ public class EnemySpawner : SpawnerBase
     protected override Vector2 GetSpawnPosition()
     {
         // 타겟의 지점에서 spawnRadius로 반지름를 갖는 원 위에 생성
-        Vector2 spawnPoint = (Vector2)_target.position + (Random.insideUnitCircle.normalized * _spawnRadius);
+        Vector2 spawnPoint = (Vector2)_target.position + (UnityEngine.Random.insideUnitCircle.normalized * _spawnRadius);
         // 맵 영역 밖에서 스폰되지 않도록 Clamp 적용 
         spawnPoint = Vector2.Min(Vector2.Max(spawnPoint, _mapMin), _mapMax);
 
@@ -103,5 +111,11 @@ public class EnemySpawner : SpawnerBase
         _countPerSpawn = countPerSpawn;
         // 스폰 지연 시간 재설정
         _wait = new WaitForSeconds(_interval);
+    }
+
+    protected override void Cleanup(GameObject obj)
+    {
+        --AliveCount;
+        OnDespawn?.Invoke();
     }
 }
