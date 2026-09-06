@@ -20,8 +20,11 @@ MonoBehaviour:
     rid: 946713177546817886
   m_ActivePlatformGuid: 
   m_AdditionalPlatformBuildSettings: []
-  m_OverrideGlobalSceneList: 0
-  m_Scenes: []
+  m_OverrideGlobalSceneList: 1
+  m_Scenes:
+  - m_enabled: 1
+    m_path: Assets/Scenes/MainScene.unity
+    m_guid: 8c9cfa26abfee488c85f1582747f6a02
   m_HasScriptingDefines: 0
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
@@ -74,8 +77,8 @@ MonoBehaviour:
     - line: '|   m_StereoRenderingPath: 0'
     - line: '|   m_ActiveColorSpace: 1'
     - line: '|   unsupportedMSAAFallback: 0'
-    - line: '|   m_SpriteBatchMaxVertexCount: 65535'
-    - line: '|   m_SpriteBatchVertexThreshold: 300'
+    - line: '|   m_SpriteBatchMaxVertexCount: 33480'
+    - line: '|   m_SpriteBatchVertexThreshold: 3968'
     - line: '|   m_MTRendering: 1'
     - line: '|   mipStripping: 0'
     - line: '|   numberOfMipsStripped: 0'
@@ -175,7 +178,9 @@ MonoBehaviour:
     - line: '|   visionOSBundleVersion: 1.0'
     - line: '|   tvOSBundleVersion: 1.0'
     - line: '|   bundleVersion: 1.0'
-    - line: '|   preloadedAssets: []'
+    - line: '|   preloadedAssets:'
+    - line: '|   - {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100,
+        type: 3}'
     - line: '|   metroInputSource: 0'
     - line: '|   wsaTransparentSwapchain: 0'
     - line: '|   xboxOneDisableKinectGpuReservation: 1'
@@ -325,7 +330,10 @@ MonoBehaviour:
     - line: '|   androidSymbolsSizeThreshold: 800'
     - line: '|   m_BuildTargetIcons: []'
     - line: '|   m_BuildTargetPlatformIcons: []'
-    - line: '|   m_BuildTargetBatching: []'
+    - line: '|   m_BuildTargetBatching:'
+    - line: '|   - m_BuildTarget: WebGL'
+    - line: '|     m_StaticBatching: 0'
+    - line: '|     m_DynamicBatching: 0'
     - line: '|   m_BuildTargetShaderSettings: []'
     - line: '|   m_BuildTargetGraphicsJobs: []'
     - line: '|   m_BuildTargetGraphicsJobMode: []'
@@ -599,7 +607,7 @@ MonoBehaviour:
     - line: '|   webGLTemplate: APPLICATION:Default'
     - line: '|   webGLAnalyzeBuildSize: 0'
     - line: '|   webGLUseEmbeddedResources: 0'
-    - line: '|   webGLCompressionFormat: 0'
+    - line: '|   webGLCompressionFormat: 1'
     - line: '|   webGLWasmArithmeticExceptions: 0'
     - line: '|   webGLLinkerTarget: 1'
     - line: '|   webGLThreadsSupport: 0'
@@ -618,6 +626,7 @@ MonoBehaviour:
     - line: '|   webEnableSubmoduleStrippingCompatibility: 0'
     - line: '|   scriptingDefineSymbols:'
     - line: '|     Standalone: SENTIS_ANALYTICS_ENABLED;APP_UI_EDITOR_ONLY'
+    - line: '|     WebGL: SENTIS_ANALYTICS_ENABLED;APP_UI_EDITOR_ONLY'
     - line: '|   additionalCompilerArguments: {}'
     - line: '|   platformArchitecture: {}'
     - line: '|   scriptingBackend:'
