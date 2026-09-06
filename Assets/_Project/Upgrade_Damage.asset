@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbeb64eb8fa170746b8949ff95dbaf64, type: 3}
   m_Name: Upgrade_Damage
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeCard
-  _title: "\uAC15\uD654 \uC138\uD3EC"
+  _title: "\uACF5\uACA9 \uC138\uD3EC"
   _stat: 0
   _amount: 10
