@@ -30,8 +30,14 @@ public abstract class SpawnerBase : MonoBehaviour
         if (!enabled) return null;
         //Instantiate 메서드를 이용해 _prefab 생성, 인자로는 위치와 회전율(2D이기에 회전없음) 제공
         GameObject obj = Instantiate(_prefab, GetSpawnPosition(), Quaternion.identity);
-        // 오버라이드한 메서드 발동
-        Setup(obj);
+        // 오버라이드한 메서드 발동 + 성공 여부 확인
+        bool isReady = Setup(obj);
+        if (!isReady)
+        {
+            // 실패 시 제거 후 null 반환
+            Destroy(obj);
+            return null;
+        }
         // 생성한 객체 반환
         return obj;
     }
@@ -44,7 +50,7 @@ public abstract class SpawnerBase : MonoBehaviour
     // 스폰위치 구현 강제
     protected abstract Vector2 GetSpawnPosition();
     // 초기화 구현 강제
-    protected abstract void Setup(GameObject obj);
+    protected abstract bool Setup(GameObject obj);
     // 자식의 Awake 대체 메서드 ( 부모의 Awake가 무시되는 상황 방지 )
     protected virtual void OnInit() {}
     // 소멸 이벤트 확장성

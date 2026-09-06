@@ -41,13 +41,17 @@ public class EnemySpawner : SpawnerBase
             // 1회 생성량에 맞춰 반복
             for (int i = 0; i < _countPerSpawn; ++i)
             {
-                Spawn();
                 // 최대 생성 수 제한
                 if(AliveCount >= _limitAliveCount)
                 {
                     break;
                 }
 
+                GameObject obj = Spawn();
+                if (obj == null)
+                {
+                    continue;
+                }
                 ++AliveCount;
                 OnSpawn?.Invoke();
             }
@@ -84,7 +88,7 @@ public class EnemySpawner : SpawnerBase
         return spawnPoint;
     }  
 
-    protected override void Setup(GameObject obj)
+    protected override bool Setup(GameObject obj)
     {
 
         EnemyChase chase = obj.GetComponent<EnemyChase>();
@@ -92,7 +96,7 @@ public class EnemySpawner : SpawnerBase
         {
             // 프리팹 미설정 경고 남기기
             Debug.LogError("Prefab에 EnemyChase가 없습니다.", obj);
-            return;
+            return false;
         }
 
         EnemyDeath death = obj.GetComponent<EnemyDeath>();
@@ -100,7 +104,7 @@ public class EnemySpawner : SpawnerBase
         {
             // 프리팹 미설정 경고 남기기
             Debug.LogError("Prefab에 EnemyDeath가 없습니다.", obj);
-            return;
+            return false;
         }
 
         chase.Init(_target);
@@ -109,6 +113,7 @@ public class EnemySpawner : SpawnerBase
         {
             death.SetDropHeartCallback(_heartSpawner.SpawnHeart);
         }
+        return true;
     }
 
     // 웨이브 시스템을 적용 시켜주는 메서드
