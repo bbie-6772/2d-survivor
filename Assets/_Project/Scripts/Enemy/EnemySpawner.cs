@@ -12,6 +12,8 @@ public class EnemySpawner : SpawnerBase
     [SerializeField] private HeartSpawner _heartSpawner;
     [SerializeField] private Vector2 _mapMin = new Vector2(-30f, -30f);
     [SerializeField] private Vector2 _mapMax = new Vector2(30f, 30f);
+    // 2D 물리 겹침의 부하를 측정하여 적절한 값을 도출하였음 (문서 0030 확인)
+    [SerializeField] private int _limitAliveCount = 600;
     // 스폰주기 초기 값
     private float _interval = 5f;
     // 스폰량 초기 값
@@ -40,6 +42,12 @@ public class EnemySpawner : SpawnerBase
             for (int i = 0; i < _countPerSpawn; ++i)
             {
                 Spawn();
+                // 최대 생성 수 제한
+                if(AliveCount >= _limitAliveCount)
+                {
+                    break;
+                }
+
                 ++AliveCount;
                 OnSpawn?.Invoke();
             }
