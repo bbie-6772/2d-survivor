@@ -16,15 +16,15 @@ MonoBehaviour:
   - StartTime: 0
     Interval: 2
     CountPerSpawn: 1
-  - StartTime: 12
+  - StartTime: 50
     Interval: 1.2
     CountPerSpawn: 2
-  - StartTime: 24
+  - StartTime: 120
     Interval: 0.8
     CountPerSpawn: 3
-  - StartTime: 36
+  - StartTime: 200
     Interval: 0.5
     CountPerSpawn: 4
-  - StartTime: 48
+  - StartTime: 250
     Interval: 0.3
     CountPerSpawn: 6

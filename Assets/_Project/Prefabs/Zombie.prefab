@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ff8492816e4bd5479878a2efb9c9a86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyChase
-  _moveSpeed: 3
+  _moveSpeed: 2.5
 --- !u!114 &-4747412374460450873
 MonoBehaviour:
   m_ObjectHideFlags: 0
