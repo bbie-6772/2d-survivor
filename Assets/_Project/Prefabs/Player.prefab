@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.8867924, g: 0.2452646, b: 0.2300641, a: 0.31764707}
+  m_Color: {r: 0.8867924, g: 0.2452646, b: 0.2300641, a: 0.27450982}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 7359617883157839032}
   m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -446,8 +446,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MeleeWeapon
   _radius: 3
   _angle: 90
-  _damage: 100
-  _attacksPerSecond: 0.5
+  _damage: 25
+  _attacksPerSecond: 0.8
   _targetLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -529,5 +529,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackFlash
   _flashSprite: {fileID: 5820484015763803269}
-  _duration: 0.1
+  _duration: 0.5
   _pivot: {fileID: 2277939930454620411}
