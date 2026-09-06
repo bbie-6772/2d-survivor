@@ -8,9 +8,7 @@
 [![2D URP](https://img.shields.io/badge/2D-URP_17.6-blue?style=flat-square)](https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@latest)
 [![Decisions](https://img.shields.io/badge/설계_기록-31건-orange?style=flat-square)](docs/decisions)
 
-<!-- TODO: WebGL 배포 후 URL을 채우고 주석 해제
-[![지금 바로 플레이](https://img.shields.io/badge/▶_지금_바로_플레이-브라우저에서_무료-4CAF50?style=for-the-badge)](배포_URL)
--->
+[![지금 바로 플레이](https://img.shields.io/badge/▶_지금_바로_플레이-브라우저에서_무료-4CAF50?style=for-the-badge)](https://bbie-6772.github.io/2d-survivor/)
 
 <img src="docs/images/play.png" alt="플레이 화면" width="720">
 
