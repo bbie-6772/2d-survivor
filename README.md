@@ -212,7 +212,7 @@ docs/
 ├── spec.md          # 기획서 (직접 작성)
 ├── plan.md          # 증명할 기술 축
 ├── conventions.md   # 네이밍·폴더·Git·Unity 관례
-└── decisions/       # 설계 판단 기록 31건
+└── decisions/       # 설계 판단 기록 32건
 ```
 
 - `Managers/`, `Interfaces/` 같은 **타입별 폴더를 쓰지 않습니다.** 관련 코드가 흩어지기 때문입니다.
