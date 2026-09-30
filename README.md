@@ -7,6 +7,7 @@
 [![Unity](https://img.shields.io/badge/Unity-6000.5.5f1-000000?style=flat-square&logo=unity)](https://unity.com/)
 [![2D URP](https://img.shields.io/badge/2D-URP_17.6-blue?style=flat-square)](https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@latest)
 [![Decisions](https://img.shields.io/badge/설계_기록-32건-orange?style=flat-square)](docs/decisions)
+[![Status](https://img.shields.io/badge/상태-완료-lightgrey?style=flat-square)](#-프로젝트-상태)
 
 [![지금 바로 플레이](https://img.shields.io/badge/▶_지금_바로_플레이-브라우저에서_무료-4CAF50?style=for-the-badge)](https://bbie-6772.github.io/2d-survivor/)
 
@@ -18,7 +19,18 @@
 
 ## 이 프로젝트는 무엇인가
 
-**AI에게 코드를 받지 않고 Unity를 학습하기 위한 프로젝트**
+**AI를 멘토로 두고, Unity를 Low한 레벨에서부터 직접 알아가기 위한 학습 프로젝트**
+
+게임을 완성하는 것 자체보다, 그 과정에서 **엔진이 실제로 어떻게 동작하는지**를 이해하는 것이 목표였습니다.
+에셋·템플릿이나 AI가 써준 코드에 기대지 않고, 기본 컴포넌트와 API만으로 직접 구현하면서
+다음과 같은 질문에 스스로 답을 내는 방식입니다.
+
+- `Rigidbody2D`의 Body Type은 충돌·이동에 어떤 차이를 만드는가 → [0001](docs/decisions/0001-enemy-body-type-dynamic.md)
+- 시간 기반 처리를 `Update` 누적과 코루틴 중 무엇으로 할 것인가 → [0008](docs/decisions/0008-coroutine-for-timing.md)
+- 씬 오브젝트 간 참조는 어떻게 주입하고, 이벤트 구독은 어떻게 해제되는가 → [0009](docs/decisions/0009-scene-reference-injection.md) · [0024](docs/decisions/0024-no-lambda-subscription.md)
+- 성능 병목은 추측이 아니라 Profiler에서 어디로 나타나는가 → [0030](docs/decisions/0030-test01-setting.md) · [0031](docs/decisions/0031-test02-setting.md)
+
+### 왜 AI를 '멘토'로 두었나
 
 이전 프로젝트에서는 AI가 기획서를 쓰고 AI가 구현했습니다.  
 그래서 완성된 뒤에
@@ -34,6 +46,8 @@
 AI의 역할을 둘로 나눴습니다. 설계를 돕는 **기획 AI**, 그리고 **완성 코드를 절대 주지 않고
 힌트·역질문·검증 실험만 제공하는 멘토 AI**입니다. 후자는 프롬프트 부탁이 아니라
 별도 모드로 규칙을 박아뒀습니다. 제가 시도한 결과를 보고해야만 한 단계 더 알려주는 방식입니다.
+
+AI는 답을 대신 내주는 도구가 아니라, 제가 엔진을 Low한 레벨에서 이해하도록 **질문을 던지고 검증을 요구하는 멘토**였습니다.
 
 그 결과 **모든 코드는 직접 작성했고**, 판단의 근거는 [`docs/decisions/`](docs/decisions)에
 32건(26.09.06)의 문서로 남았습니다.
@@ -71,17 +85,16 @@ AI의 역할을 둘로 나눴습니다. 설계를 돕는 **기획 AI**, 그리�
 
 ## 🛠 구현 범위
 
-`spec.md`에 설계한 것 중 일부는 마감 전에 잘라냈습니다.
+`spec.md`에 설계한 것 중 일부는 마감 전에 잘라냈고, **이 범위 그대로 프로젝트를 마무리했습니다.**
 **무엇을 왜 잘랐는지도 기록으로 남겼습니다**  
 → [0017. 마감 전 주말 작업 범위를 재조정한다](docs/decisions/0017-weekend-scope-cut.md)
 
 | | 항목 |
 |---|---|
 | **구현** | 이동·대시, 방향 조준 근접 공격, 좀비 스폰(웨이브 테이블), 접촉 데미지, 심장 드랍 → 경험치 → 레벨업 카드 3택, 타이머·승패·재시작, HUD(체력·쿨다운·남은 시간) |
-| **보류** | 보스(중간/최종), 무기 교체(샷건·스나이퍼), 대시 무적, FSM 리팩토링, 애니메이션 |
+| **제외** | 보스(중간/최종), 무기 교체(샷건·스나이퍼), 대시 무적, FSM 리팩토링, 애니메이션 |
 
-보스를 제외했으므로 승리 조건은 "최종보스 격파"에서 **"5분 생존"으로 잠정 처리**했습니다.  
-보스 구현 시 원래 조건으로 되돌립니다.
+보스를 제외했으므로 승리 조건은 "최종보스 격파" 대신 **"5분 생존"으로 확정**했습니다.
 
 ---
 
@@ -118,7 +131,7 @@ EnemyDeath ──콜백──▶ EnemySpawner ──이벤트──▶ CountZomb
 `plan.md`의 기술 축 3은 **오브젝트 풀링 + GC 제거, Profiler before/after**였습니다.
 "숫자로 남는 유일한 축"이라 마지막까지 지킬 항목으로 잡아뒀습니다.
 
-**측정 결과 이 계획은 현재의 구현상황에선 폐기됐습니다.** 그 과정이 이 프로젝트의 핵심 기록입니다.  
+**측정 결과 이 계획은 폐기됐습니다.** 그 과정이 이 프로젝트의 핵심 기록입니다.  
 → [0030. 성능 측정 조건](docs/decisions/0030-test-setting.md) · [0031. 풀링 효과 측정](docs/decisions/0031-test02-setting.md)
 
 ### ① 병목은 GC가 아니라 물리였다
@@ -218,6 +231,16 @@ docs/
 - `Managers/`, `Interfaces/` 같은 **타입별 폴더를 쓰지 않습니다.** 관련 코드가 흩어지기 때문입니다.
 - `GameManager.cs` 같은 이름을 만들지 않습니다. **파일 이름만 보고 책임을 한 문장으로
   말할 수 없으면 잘못된 이름**이라는 규칙을 적용했습니다.
+
+---
+
+## 🏁 프로젝트 상태
+
+**이 프로젝트는 현재 버전으로 완료되었으며, 이후 기능 추가 계획은 없습니다.**
+
+목표였던 "AI를 멘토로 Unity를 Low한 레벨에서 알아가기"는 코어 루프 완성과
+32건의 설계 기록, 성능 가설 검증으로 달성했다고 판단했습니다.
+위 [구현 범위](#-구현-범위)의 '제외' 항목은 향후 과제가 아니라, 이번 학습 범위에서 의도적으로 뺀 것입니다.
 
 ---
 
